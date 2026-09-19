@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ballpark: calories, roughly; weight, precisely</title>
+<meta name="description" content="A weight tracker that filters the noise out of the scale, and a food log that asks you to guess rather than pretend you measured. Nothing leaves your iPhone.">
+<link rel="canonical" href="https://ballpark.tombak.xyz/">
+<style>
+  :root {
+    --bg: #0a0a0d;
+    --card: #1c1c1f;
+    --card-inner: #29292b;
+    --text: #ffffff;
+    --muted: #9e9e9e;
+    --accent: #b394f5;
+    --scale: #73b8ff;
+    --measure: 34rem;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    padding: 0 16px;
+  }
+  main { max-width: 52rem; margin: 0 auto; padding: 4rem 0 5rem; }
+  h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.15; margin: 0 0 .5rem; letter-spacing: -0.02em; }
+  h2 { font-size: 1.35rem; margin: 3rem 0 .75rem; letter-spacing: -0.01em; }
+  h3 { font-size: 1.05rem; margin: 2rem 0 .4rem; }
+  p, li { max-width: var(--measure); color: var(--muted); }
+  p strong, li strong { color: var(--text); font-weight: 600; }
+  .lead { font-size: 1.15rem; color: var(--text); }
+  a { color: var(--scale); }
+  .eyebrow {
+    font-size: .7rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 1rem;
+  }
+  .rule { border-left: 3px solid var(--accent); padding-left: 1rem; }
+  .rule.blue { border-left-color: var(--scale); }
+  .shots {
+    display: flex; gap: 1rem; margin: 2.5rem 0; overflow-x: auto;
+    padding-bottom: .5rem; scroll-snap-type: x mandatory;
+  }
+  .shots img {
+    width: 232px; flex: 0 0 auto; border-radius: 22px;
+    border: 1px solid var(--card-inner); scroll-snap-align: start;
+  }
+  .card {
+    background: var(--card); border-radius: 18px; padding: 1.25rem 1.5rem;
+    margin: 1rem 0;
+  }
+  .card h3 { margin-top: 0; }
+  .card p:last-child { margin-bottom: 0; }
+  footer {
+    margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--card-inner);
+    font-size: .85rem;
+  }
+  code { background: var(--card-inner); padding: .1em .35em; border-radius: 4px; font-size: .9em; }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="eyebrow">iPhone · Apple Health · no account</p>
+  <h1>Calories, roughly.<br>Weight, precisely.</h1>
+  <p class="lead">Ballpark is a scale, made useful.</p>
+
+  <p>Your weight moves a kilogram or more in a day on water alone. Ballpark runs
+  your scale readings through a Kalman filter and a smoother — the estimator used
+  for tracking noisy signals — and draws the line underneath, with the rate of
+  change it implies.</p>
+
+  <p>It logs food too, <strong>deliberately badly</strong>. You tap one of four
+  buckets for each meal — small, normal, large, huge — and snacks add up rather
+  than replacing each other. That is the whole input. No barcode scanner, no food
+  database, no photograph analysed by a model that returns “642 kcal” as though
+  it had measured something.</p>
+
+  <div class="shots">
+    <img src="trend.png" alt="The weight screen: a filtered trend line over the raw scale readings, with the rate of change.">
+    <img src="meals.png" alt="The meals screen: one card per meal with small, normal, large and huge buckets.">
+    <img src="maintenance.png" alt="The maintenance card: an energy expenditure derived from logged intake and the weight trend.">
+  </div>
+
+  <h2>What it does</h2>
+
+  <div class="card rule">
+    <h3>A trend line, not yesterday’s number</h3>
+    <p>Over a fortnight of ordinary living, roughly 84% of a unit change in body
+    weight is fat-free mass — water, gut contents, glycogen. The filter separates
+    the signal from that, and the app shows you both: the raw readings as points,
+    the trend as a line.</p>
+  </div>
+
+  <div class="card rule blue">
+    <h3>A food log that admits it is guessing</h3>
+    <p>Four buckets per meal, calibrated once to what your own normal portion is
+    worth. A meal you skipped is one tap, and it is different from a meal you
+    forgot — the app needs to know which.</p>
+  </div>
+
+  <div class="card rule blue">
+    <h3>What you actually spend</h3>
+    <p>After a fortnight of complete days, Ballpark works out your energy
+    expenditure from your own logged intake against what the scale did, rather
+    than from a formula off your age and height. It is in the units of your own
+    logging: if your portions run low, the figure runs low with them, and the two
+    cancel when you log against it. The app says so, in those words, on the card
+    itself.</p>
+  </div>
+
+  <div class="card rule">
+    <h3>A goal, if you want one</h3>
+    <p>State a goal weight and the app will tell you how far there is to go and
+    how long your own measured rate would take to get there. It never invents a
+    goal, never adjusts one you set, and never treats missing it as anything at
+    all. Without a goal you still get one plain sentence at the top of the
+    screen every time you open it — “Down 0.4 kg over the last month” — rather
+    than five statistics and no verdict.</p>
+  </div>
+
+  <div class="card rule blue">
+    <h3>Log without opening it</h3>
+    <p>Seven widgets for the Home and Lock Screen, including one for the
+    maintenance figure. Two Control&nbsp;Centre buttons. And Siri: <em>“log my
+    weight”</em>, <em>“log a normal meal”</em>. Tapping a bucket on a widget
+    writes straight to the log without the app ever opening.</p>
+  </div>
+
+  <div class="card rule">
+    <h3>Your data, and the door out of here</h3>
+    <p>Export everything as two CSV files whenever you like. The weights file
+    carries the filter’s own trend and slope beside each reading, so the maths
+    can be checked without re-running it. A local-only app owes you an exit more
+    than a syncing one does, not less: there is no copy on a server to fall back
+    on.</p>
+  </div>
+
+  <h2>What it will not do</h2>
+  <ul>
+    <li>No account, no sign-in, no sync, no server. The app makes no network
+    requests at all. The one link out — to Open&nbsp;Food&nbsp;Facts, for looking
+    up what something is worth — hands a web address to Safari and carries
+    nothing about your log with it.</li>
+    <li>No advertising, no analytics, no crash reporting, no third-party SDKs.</li>
+    <li>It never writes to Apple Health — it only reads weight, if you allow it.</li>
+    <li>It will not nag you to log food. A guess made to satisfy a notification
+    is worse than no guess.</li>
+  </ul>
+
+  <h2 id="support">Support</h2>
+
+  <h3>The maintenance figure has not appeared</h3>
+  <p>It needs fourteen days that carry both a weigh-in and a <em>complete</em>
+  meal log — every meal your own schedule expects, including the ones you mark
+  <strong>none</strong> because you skipped them. Half-logged days are left out entirely
+  rather than counted light, because a day missing its dinner looks exactly like
+  a day with a large deficit.</p>
+
+  <h3>My weight from my scale is not showing up</h3>
+  <p>Pull down on the Weight screen to check Apple Health. If nothing arrives,
+  check <strong>Settings › Health › Data Access &amp; Devices › Ballpark</strong>
+  and make sure reading weight is allowed. Manual entries always win over Health
+  ones, so a reading you corrected by hand is never overwritten by a later
+  import.</p>
+
+  <h3>I recalibrated a meal and my history looks wrong</h3>
+  <p>When you set a new “normal” portion, the app offers to re-price the last
+  fourteen days of meals that were logged with a bucket. Meals where you typed a
+  number are left alone. If you declined at the time, set the normal portion
+  again and accept the offer.</p>
+
+  <h3>The numbers look small on my phone</h3>
+  <p>Explanatory text follows your system text size
+  (<strong>Settings › Display &amp; Brightness › Text Size</strong>), in the app
+  and in the widgets. The numbers and the tap targets are fixed by design, and
+  the whole layout scales up a little on larger phones.</p>
+
+  <h3>How do I get my data out?</h3>
+  <p><strong>Settings › Your data</strong> gives you two CSV files — weights and
+  meals — through the normal share sheet. Nothing is uploaded; you choose where
+  the copy goes.</p>
+
+  <h3>Why does it want me to mark meals I skipped?</h3>
+  <p>Because a meal you skipped and a meal you forgot look identical otherwise,
+  and the difference is the largest source of error in the maintenance figure. A
+  day missing its dinner looks exactly like a day with a large deficit. Only days
+  where every meal is accounted for are used.</p>
+
+  <h3>Something else</h3>
+  <p>Write to the address below. There is no account to look up and no data on
+  any server, so please describe what you saw — nothing can be checked from
+  this end.</p>
+
+  <h2 id="privacy">Privacy policy</h2>
+  <p><em>Last updated: 18 September 2026.</em></p>
+
+  <p>Ballpark is a weight tracker with a simple food log. The short version:
+  <strong>nothing you enter ever leaves your iPhone.</strong></p>
+
+  <h3>What the app collects</h3>
+  <p>Nothing is collected by us. There is no account, no sign-in, no analytics,
+  no advertising, no crash reporting, and no third-party software development
+  kits of any kind. The app makes no network requests at all — it has no server
+  to talk to.</p>
+
+  <h3>What the app stores on your device</h3>
+  <p>All of the following stays in the app’s own storage on your iPhone, and in
+  the shared storage the app uses for its widgets:</p>
+  <ul>
+    <li><strong>Weight readings</strong> — the value, the date, and whether you
+    typed it or it came from Apple Health.</li>
+    <li><strong>Meals and snacks</strong> — which portion you tapped, the
+    resulting calorie estimate, and when you logged it.</li>
+    <li><strong>Your settings</strong> — portion calibrations, day patterns,
+    daily target, goal weight, reminder time, and unit preference.</li>
+    <li><strong>Exports you ask for</strong> — a CSV you request is written to
+    the device's temporary storage and handed to the system share sheet. Where
+    it goes next is your choice, and the app plays no part in it.</li>
+  </ul>
+
+  <h3>Apple Health</h3>
+  <p>If you grant permission, the app <strong>reads</strong> body-mass (weight)
+  samples from Apple Health so readings from a connected scale appear without
+  retyping.</p>
+  <p>The app <strong>never writes to Apple Health.</strong> This is enforced
+  three ways: there is no write method in the code, authorisation is requested
+  with an empty “share” set so iOS never offers write permission, and the
+  Info.plist deliberately omits <code>NSHealthUpdateUsageDescription</code>,
+  which means iOS would terminate the app if it ever attempted a write.</p>
+  <p>Health data read by the app is copied into the app’s own local storage so
+  the app still works if you deny or revoke permission. It is never transmitted
+  anywhere. You can revoke access at any time in <strong>Settings › Health ›
+  Data Access &amp; Devices</strong>, or in <strong>Settings › Privacy &amp;
+  Security › Health</strong>.</p>
+
+  <h3>Camera and photo library</h3>
+  <p>The app does not use the camera and cannot read your photo library. It
+  requests no permission for either. An earlier version photographed meals; that
+  feature was removed, and the app deletes any photographs left behind by it on
+  first launch.</p>
+
+  <h3>Links to other websites</h3>
+  <p>The app links to <strong>Open Food Facts</strong>, an open, community-run
+  food database, for looking up what something is worth. Opening it hands a web
+  address to Safari; the app itself still makes no network requests, and nothing
+  about your log goes with the link. Once there you are subject to that site’s
+  privacy policy, not this one.</p>
+
+  <h3>Notifications</h3>
+  <p>If you switch on the weigh-in reminder, the app schedules a local
+  notification on your device. Nothing is sent through any server.</p>
+
+  <h3>Sharing</h3>
+  <p>Your information is not sold, shared, or disclosed to anyone, because it
+  never leaves your device in the first place. There are no third parties
+  involved in the operation of this app.</p>
+
+  <h3>Deleting your data</h3>
+  <p>Deleting the app removes everything: the database and the settings. Within
+  the app you can delete individual weight entries, meals, snacks and
+  measurements. Data the app read from Apple Health is not deleted from Apple
+  Health by deleting the app — manage that in the Health app.</p>
+
+  <h3>Children</h3>
+  <p>The app is not directed at children and collects nothing from anyone.</p>
+
+  <h3>Changes</h3>
+  <p>If this policy changes, the updated version will be published at this
+  address with a new date at the top.</p>
+
+  <h3>Contact</h3>
+  <p>Questions about this policy, or about the app:
+  <a href="mailto:ballpark@tombak.xyz">ballpark@tombak.xyz</a></p>
+
+  <footer>
+    <p>Ballpark is not a medical device. Everything it shows is an estimate from
+    your own measurements, offered as one, and none of it is medical advice.</p>
+    <p>© 2026 Tom Bakx · <a href="#privacy">Privacy</a> ·
+    <a href="#support">Support</a></p>
+  </footer>
+
+</main>
+</body>
+</html>
