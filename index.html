@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ballpark: calories, roughly; weight, precisely</title>
-<meta name="description" content="A weight tracker that filters the noise out of the scale, and a food log that asks you to guess rather than pretend you measured. Nothing leaves your iPhone.">
+<title>Ballpark Figure: calories, roughly; weight, precisely</title>
+<meta name="description" content="A weight tracker that filters the noise out of the scale, and a food log that asks you to guess rather than pretend you measured. Syncs through your own iCloud; no server, no account, no analytics.">
 <link rel="canonical" href="https://ballpark.tombak.xyz/">
 <style>
   :root {
@@ -66,7 +66,7 @@
 
   <p class="eyebrow">iPhone · Apple Health · no account</p>
   <h1>Calories, roughly.<br>Weight, precisely.</h1>
-  <p class="lead">Ballpark is a scale, made useful.</p>
+  <p class="lead">Ballpark Figure is a scale, made useful.</p>
 
   <p>Your weight moves a kilogram or more in a day on water alone. Ballpark runs
   your scale readings through a Kalman filter and a smoother — the estimator used
@@ -141,10 +141,11 @@
 
   <h2>What it will not do</h2>
   <ul>
-    <li>No account, no sign-in, no sync, no server. The app makes no network
-    requests at all. The one link out — to Open&nbsp;Food&nbsp;Facts, for looking
-    up what something is worth — hands a web address to Safari and carries
-    nothing about your log with it.</li>
+    <li>No account, no sign-in, no server. Syncing between your own devices goes
+    through your own iCloud, where the developer cannot read it; switch iCloud
+    off and the app works exactly the same on one device. The one link out — to
+    Open&nbsp;Food&nbsp;Facts, for looking up what something is worth — hands a
+    web address to Safari and carries nothing about your log with it.</li>
     <li>No advertising, no analytics, no crash reporting, no third-party SDKs.</li>
     <li>It never writes to Apple Health — it only reads weight, if you allow it.</li>
     <li>It will not nag you to log food. A guess made to satisfy a notification
@@ -198,14 +199,30 @@
   <h2 id="privacy">Privacy policy</h2>
   <p><em>Last updated: 19 September 2026.</em></p>
 
-  <p>Ballpark is a weight tracker with a simple food log. The short version:
-  <strong>nothing you enter ever leaves your iPhone.</strong></p>
+  <p>Ballpark Figure is a weight tracker with a simple food log. The short version:
+  <strong>your data is yours, it syncs only through your own iCloud account, and
+  the developer has no server and cannot read any of it.</strong></p>
 
   <h3>What the app collects</h3>
-  <p>Nothing is collected by us. There is no account, no sign-in, no analytics,
-  no advertising, no crash reporting, and no third-party software development
-  kits of any kind. The app makes no network requests at all — it has no server
-  to talk to.</p>
+  <p>Nothing is collected by us. There is no account to create, no sign-in, no
+  analytics, no advertising, no crash reporting, and no third-party software
+  development kits of any kind. <strong>There is no server operated by the
+  developer, and no copy of your data that the developer can reach.</strong>
+  The app does make network requests, for exactly one purpose: keeping your own
+  devices in step through iCloud.</p>
+
+  <h3>iCloud sync</h3>
+  <p>If you are signed in to iCloud, the app keeps your weights, meals, snacks
+  and measurements in step across your own devices using CloudKit’s
+  <strong>private database</strong>. The data goes to <em>your</em> iCloud
+  account and counts against your iCloud storage. <strong>The developer cannot
+  read it</strong> — a private database is not visible to the app’s author
+  through the CloudKit dashboard or any API, which is enforced by Apple’s
+  infrastructure rather than by a promise on this page. Apple operates the
+  storage and their own privacy policy governs it.</p>
+  <p>If you are not signed in, or you turn iCloud off for this app in
+  Settings › [your name] › iCloud, everything stays on the device alone and the
+  app works exactly as before.</p>
 
   <h3>What the app stores on your device</h3>
   <p>All of the following stays in the app’s own storage on your iPhone, and in
@@ -246,7 +263,7 @@
   <h3>Links to other websites</h3>
   <p>The app links to <strong>Open Food Facts</strong>, an open, community-run
   food database, for looking up what something is worth. Opening it hands a web
-  address to Safari; the app itself still makes no network requests, and nothing
+  address to Safari; nothing
   about your log goes with the link. Once there you are subject to that site’s
   privacy policy, not this one.</p>
 
@@ -255,14 +272,19 @@
   notification on your device. Nothing is sent through any server.</p>
 
   <h3>Sharing</h3>
-  <p>Your information is not sold, shared, or disclosed to anyone, because it
-  never leaves your device in the first place. There are no third parties
-  involved in the operation of this app.</p>
+  <p>Your information is not sold, shared, or disclosed to anyone. The only
+  party that handles it besides you is Apple, as the operator of the iCloud
+  account it syncs through. There are no advertisers, no analytics providers and
+  no data brokers involved in the operation of this app, and there is nothing
+  for the developer to sell, because the developer has no copy.</p>
 
   <h3>Deleting your data</h3>
-  <p>Deleting the app removes everything: the database and the settings. Within
+  <p>Deleting the app removes the copy on that device. <strong>If iCloud sync is
+  on, the copy in your iCloud account is not removed by deleting the app</strong>
+  — remove it in Settings › [your name] › iCloud › Manage Account Storage. Within
   the app you can delete individual weight entries, meals, snacks and
-  measurements. Data the app read from Apple Health is not deleted from Apple
+  measurements, and a deletion syncs to your other devices like any other change.
+  Data the app read from Apple Health is not deleted from Apple
   Health by deleting the app — manage that in the Health app.</p>
 
   <h3>Children</h3>
