@@ -64,7 +64,7 @@
 <body>
 <main>
 
-  <p class="eyebrow">iPhone · Apple Health · no account</p>
+  <p class="eyebrow">iPhone &amp; iPad · Apple Health · no account</p>
   <h1>Calories, roughly.<br>Weight, precisely.</h1>
   <p class="lead">Ballpark Figure is a scale, made useful.</p>
 
@@ -73,15 +73,16 @@
   for tracking noisy signals — and draws the line underneath, with the rate of
   change it implies.</p>
 
-  <p>It logs food too, <strong>deliberately badly</strong>. You tap one of four
-  buckets for each meal — small, normal, large, huge — and snacks add up rather
+  <p>It logs food too, <strong>deliberately roughly</strong>. For each meal you
+  tick a portion — small, medium or large, with a nudge either way for a tiny or a
+  huge one — or <strong>none</strong>, if you skipped it. Snacks add up rather
   than replacing each other. That is the whole input. No barcode scanner, no food
   database, no photograph analysed by a model that returns “642 kcal” as though
   it had measured something.</p>
 
   <div class="shots">
     <img src="trend.png" alt="The weight screen: a filtered trend line over the raw scale readings, with the rate of change.">
-    <img src="meals.png" alt="The meals screen: one card per meal with small, normal, large and huge buckets.">
+    <img src="meals.png" alt="The meals screen: one card per meal with small, medium and large portions, and none.">
     <img src="maintenance.png" alt="The maintenance card: an energy expenditure derived from logged intake and the weight trend.">
   </div>
 
@@ -97,16 +98,20 @@
 
   <div class="card rule blue">
     <h3>A food log that admits it is guessing</h3>
-    <p>Four buckets per meal, calibrated once to what your own normal portion is
-    worth. A meal you skipped is one tap, and it is different from a meal you
-    forgot — the app needs to know which.</p>
+    <p>Three portions per meal, calibrated once to what your own medium portion
+    is worth. Three meals, or up to six if that is how you eat. A meal you skipped
+    is one tap, and it is different from a meal you forgot — the app needs to
+    know which.</p>
   </div>
 
   <div class="card rule blue">
     <h3>What you actually spend</h3>
-    <p>After a fortnight of complete days, Ballpark works out your energy
-    expenditure from your own logged intake against what the scale did, rather
-    than from a formula off your age and height. It is in the units of your own
+    <p>Ballpark works out your energy expenditure from your own logged intake
+    against what the scale did, rather than from a formula off your age and
+    height. The figure is there from day one, as an estimate from your body
+    weight; it becomes <em>provisional</em> as complete days build up, and
+    <em>measured</em> once your own data carries it — with its uncertainty printed
+    beside it at every stage. It is in the units of your own
     logging: if your portions run low, the figure runs low with them, and the two
     cancel when you log against it. The app says so, in those words, on the card
     itself.</p>
@@ -124,10 +129,12 @@
 
   <div class="card rule blue">
     <h3>Log without opening it</h3>
-    <p>Seven widgets for the Home and Lock Screen, including one for the
-    maintenance figure. Two Control&nbsp;Centre buttons. And Siri: <em>“log my
-    weight”</em>, <em>“log a normal meal”</em>. Tapping a bucket on a widget
-    writes straight to the log without the app ever opening.</p>
+    <p>Thirteen widgets for the Home and Lock Screen, including one for the
+    maintenance figure, one that records a weigh-in from the home screen, and one
+    that adds a hundred calories from the Lock Screen. Four Control&nbsp;Centre
+    buttons. And Siri: <em>“log my weight”</em>, <em>“log a medium meal”</em>.
+    Tapping a portion on a widget writes straight to the log without the app ever
+    opening.</p>
   </div>
 
   <div class="card rule">
@@ -137,6 +144,14 @@
     can be checked without re-running it. A local-only app owes you an exit more
     than a syncing one does, not less: there is no copy on a server to fall back
     on.</p>
+  </div>
+
+  <div class="card rule">
+    <h3>Free, and staying that way</h3>
+    <p>Every number the app shows, every meal and every widget is free. If
+    Ballpark is useful to you, you can support it with a one-time purchase, at
+    whichever of three prices suits you — all three do the same thing. As a
+    thank-you, it unlocks extra colour schemes and app icons. Nothing else.</p>
   </div>
 
   <h2>What it will not do</h2>
@@ -154,25 +169,34 @@
 
   <h2 id="support">Support</h2>
 
-  <h3>The maintenance figure has not appeared</h3>
-  <p>It needs fourteen days that carry both a weigh-in and a <em>complete</em>
-  meal log — every meal your own schedule expects, including the ones you mark
-  <strong>none</strong> because you skipped them. Half-logged days are left out entirely
-  rather than counted light, because a day missing its dinner looks exactly like
-  a day with a large deficit.</p>
+  <h3>The maintenance figure still says “estimated” or “provisional”</h3>
+  <p>It starts as an estimate from your body weight, turns provisional after
+  three <em>complete</em> days, and is marked measured once it rests on
+  twenty-one complete days and four weeks of weighing. A complete day is one
+  where every meal your own schedule expects is logged, including the ones you
+  mark <strong>none</strong> because you skipped them. Half-logged days are left
+  out entirely rather than counted light, because a day missing its dinner looks
+  exactly like a day with a large deficit.</p>
 
   <h3>My weight from my scale is not showing up</h3>
-  <p>Pull down on the Weight screen to check Apple Health. If nothing arrives,
+  <p>Readings from Apple Health arrive by themselves when you open the app, and
+  usually in the background too, though iOS decides when that runs. Pull down on
+  the Weight screen to check straight away. If nothing arrives,
   check <strong>Settings › Health › Data Access &amp; Devices › Ballpark</strong>
   and make sure reading weight is allowed. Manual entries always win over Health
   ones, so a reading you corrected by hand is never overwritten by a later
   import.</p>
 
   <h3>I recalibrated a meal and my history looks wrong</h3>
-  <p>When you set a new “normal” portion, the app offers to re-price the last
+  <p>When you set a new “medium” portion, the app offers to re-price the last
   fourteen days of meals that were logged with a bucket. Meals where you typed a
-  number are left alone. If you declined at the time, set the normal portion
+  number are left alone. If you declined at the time, set the medium portion
   again and accept the offer.</p>
+
+  <h3>I bought the supporter purchase on another device</h3>
+  <p>It follows your Apple Account, and Family Sharing, by itself. If the extra
+  colour schemes do not appear, open <strong>Settings › Support Ballpark</strong>
+  and tap <strong>Restore a previous purchase</strong>.</p>
 
   <h3>The numbers look small on my phone</h3>
   <p>Explanatory text follows your system text size
@@ -197,7 +221,7 @@
   this end.</p>
 
   <h2 id="privacy">Privacy policy</h2>
-  <p><em>Last updated: 19 September 2026.</em></p>
+  <p><em>Last updated: 24 September 2026.</em></p>
 
   <p>Ballpark Figure is a weight tracker with a simple food log. The short version:
   <strong>your data is yours, it syncs only through your own iCloud account, and
@@ -220,6 +244,9 @@
   through the CloudKit dashboard or any API, which is enforced by Apple’s
   infrastructure rather than by a promise on this page. Apple operates the
   storage and their own privacy policy governs it.</p>
+  <p>Your settings — portion calibrations, goal, units, colour scheme — are kept
+  in step the same way, through iCloud’s key-value storage, which is also held
+  in your own account.</p>
   <p>If you are not signed in, or you turn iCloud off for this app in
   Settings › [your name] › iCloud, everything stays on the device alone and the
   app works exactly as before.</p>
@@ -244,13 +271,21 @@
   samples from Apple Health so readings from a connected scale appear without
   retyping.</p>
   <p>The app <strong>never writes to Apple Health.</strong> This is enforced
-  three ways: there is no write method in the code, authorisation is requested
-  with an empty “share” set so iOS never offers write permission, and the
-  Info.plist deliberately omits <code>NSHealthUpdateUsageDescription</code>,
-  which means iOS would terminate the app if it ever attempted a write.</p>
+  two ways: there is no write method anywhere in the code, and authorisation is
+  requested with an empty “share” set —
+  <code>requestAuthorization(toShare: [], read: [bodyMass])</code> — so iOS
+  never offers write permission and never grants it.</p>
+  <p>The Info.plist does carry <code>NSHealthUpdateUsageDescription</code>, and
+  until 20 September 2026 this page said it deliberately did not. That was true,
+  and Apple’s upload validation rejects it: a writing purpose string is
+  required of every app holding the HealthKit entitlement, whether or not the
+  app writes. The string is there, it says the app does not write, and it is
+  never shown to you, because no write authorisation is ever requested.</p>
   <p>Health data read by the app is copied into the app’s own local storage so
-  the app still works if you deny or revoke permission. It is never transmitted
-  anywhere. You can revoke access at any time in <strong>Settings › Health ›
+  the app still works if you deny or revoke permission. With your permission,
+  iOS may wake the app briefly in the background when Health gains a new weight,
+  so your widgets stay current; that reading, too, stays on the device and in
+  your own iCloud. It is never transmitted anywhere else. You can revoke access at any time in <strong>Settings › Health ›
   Data Access &amp; Devices</strong>, or in <strong>Settings › Privacy &amp;
   Security › Health</strong>.</p>
 
@@ -266,6 +301,12 @@
   address to Safari; nothing
   about your log goes with the link. Once there you are subject to that site’s
   privacy policy, not this one.</p>
+
+  <h3>Purchases</h3>
+  <p>The optional supporter purchase is sold and processed by Apple through the
+  App Store. The developer receives no payment details and no information about
+  who bought it; the app checks whether it has been bought on the device itself,
+  through Apple’s StoreKit.</p>
 
   <h3>Notifications</h3>
   <p>If you switch on the weigh-in reminder, the app schedules a local
