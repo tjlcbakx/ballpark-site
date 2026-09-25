@@ -162,7 +162,8 @@
     Open&nbsp;Food&nbsp;Facts, for looking up what something is worth — hands a
     web address to Safari and carries nothing about your log with it.</li>
     <li>No advertising, no analytics, no crash reporting, no third-party SDKs.</li>
-    <li>It never writes to Apple Health — it only reads weight, if you allow it.</li>
+    <li>It writes to Apple Health only if you switch that on, and then only the
+    weights you entered — never meals, calories or the trend line.</li>
     <li>It will not nag you to log food. A guess made to satisfy a notification
     is worse than no guess.</li>
   </ul>
@@ -221,7 +222,7 @@
   this end.</p>
 
   <h2 id="privacy">Privacy policy</h2>
-  <p><em>Last updated: 24 September 2026.</em></p>
+  <p><em>Last updated: 25 September 2026.</em></p>
 
   <p>Ballpark Figure is a weight tracker with a simple food log. The short version:
   <strong>your data is yours, it syncs only through your own iCloud account, and
@@ -270,17 +271,17 @@
   <p>If you grant permission, the app <strong>reads</strong> body-mass (weight)
   samples from Apple Health so readings from a connected scale appear without
   retyping.</p>
-  <p>The app <strong>never writes to Apple Health.</strong> This is enforced
-  two ways: there is no write method anywhere in the code, and authorisation is
-  requested with an empty “share” set —
-  <code>requestAuthorization(toShare: [], read: [bodyMass])</code> — so iOS
-  never offers write permission and never grants it.</p>
-  <p>The Info.plist does carry <code>NSHealthUpdateUsageDescription</code>, and
-  until 20 September 2026 this page said it deliberately did not. That was true,
-  and Apple’s upload validation rejects it: a writing purpose string is
-  required of every app holding the HealthKit entitlement, whether or not the
-  app writes. The string is there, it says the app does not write, and it is
-  never shown to you, because no write authorisation is ever requested.</p>
+  <p>The app <strong>writes to Apple Health only if you turn it on</strong>,
+  in <strong>Settings › Apple Health › Save my weigh-ins to Apple
+  Health</strong>. It is off until you do, and permission to write is asked for
+  only at that moment. What it then writes is <strong>body mass, and only the
+  weights you entered yourself</strong> — in the app, with a widget or with
+  Siri. It never writes the trend line, meals, calories or any other kind of
+  Health data, and it never writes back a reading that came from Health in the
+  first place. Deleting a weigh-in in the app also deletes the copy it saved in
+  Health. Turning the switch off stops further writing; weights already saved
+  stay in Health, which is where you can see or delete them (Health › Browse ›
+  Body Measurements › Weight).</p>
   <p>Health data read by the app is copied into the app’s own local storage so
   the app still works if you deny or revoke permission. With your permission,
   iOS may wake the app briefly in the background when Health gains a new weight,
